@@ -4,7 +4,7 @@ package com.vtiger.qa.testcases;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.tiger.qa.base.BaseClass;
+import com.vtiger.qa.base.BaseClass;
 import com.vtiger.qa.pages.LoginPage;
 
 public class VerifyLoginPage extends BaseClass {

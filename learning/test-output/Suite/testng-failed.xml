@@ -3,9 +3,18 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
+      <class name="com.vtiger.qa.testcases.VerifyLead">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="lead"/>
+          <include name="tcCheckLead"/>
+        </methods>
+      </class> <!-- com.vtiger.qa.testcases.VerifyLead -->
       <class name="com.vtiger.qa.testcases.VerifyAccount">
         <methods>
           <include name="tearDown"/>
+          <include name="tcAllDeleteAccount"/>
           <include name="setUp"/>
           <include name="delete"/>
           <include name="tcCheckAccount"/>
@@ -14,10 +23,10 @@
       </class> <!-- com.vtiger.qa.testcases.VerifyAccount -->
       <class name="com.vtiger.qa.testcases.VerifyLoginPage">
         <methods>
-          <include name="tearDown"/>
           <include name="login"/>
-          <include name="tcValidateLoginPage"/>
+          <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="tcValidateLoginPage"/>
         </methods>
       </class> <!-- com.vtiger.qa.testcases.VerifyLoginPage -->
     </classes>

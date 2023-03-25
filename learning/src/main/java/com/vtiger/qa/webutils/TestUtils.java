@@ -1,13 +1,17 @@
 package com.vtiger.qa.webutils;
 
-import java.time.Duration;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import com.tiger.qa.base.BaseClass;
+import com.vtiger.qa.base.BaseClass;
 
 public class TestUtils extends BaseClass {
 	
@@ -57,9 +61,14 @@ public class TestUtils extends BaseClass {
 		}
 	}
 	
-	public void handlesAlert() {
+	public void handlesAlert(String exAlertText) {
 		alert = driver.switchTo().alert();
-		alert.accept();
+		String alertText = alert.getText();
+		if(alertText.equalsIgnoreCase(exAlertText)) {
+			alert.accept();
+		} else {
+			System.out.println("Alert not visible" + exAlertText);
+		}
 	}
 	
 	public void actionObj(WebDriver driver) {
@@ -103,9 +112,23 @@ public class TestUtils extends BaseClass {
 	}
 	
 	public void implicitlyWait() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
 	}
 	
+	public Properties loadConfig() {
+		Properties prop = new Properties();
+		try {
+			FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\com\\vtiger\\qa\\config\\config.properties");
+		    prop.load(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return prop;
+	}
 
 }
 

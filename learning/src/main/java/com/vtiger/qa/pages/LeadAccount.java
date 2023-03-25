@@ -3,9 +3,13 @@ package com.vtiger.qa.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.tiger.qa.base.BaseClass;
+import com.vtiger.qa.pageobjects.LeadAccountObject;
 
-public class LeadAccount extends BaseClass {
+public class LeadAccount extends LeadAccountObject {
+	
+	public LeadAccount() {
+		super();
+	}
 	
 	public void clickOnLeads() {
 		HomePage home = new HomePage();
@@ -13,10 +17,10 @@ public class LeadAccount extends BaseClass {
 	}
 	
 	public void searchLeadsByLeadNumber(String str) {
-		WebElement serach = driver.findElement(By.xpath("//input[@name='search_text']"));
-		utils.inputdata(serach, str);
+//		WebElement serach = driver.findElement(By.xpath("//input[@name='search_text']"));
+		utils.inputdata(search, str);
 		
-		WebElement click = driver.findElement(By.xpath("//input[@name='submit']"));
+//		WebElement click = driver.findElement(By.xpath("//input[@name='submit']"));
 		utils.clickOnElement(click);
 		
 	}	
